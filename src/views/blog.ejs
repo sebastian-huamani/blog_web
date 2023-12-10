@@ -1,45 +1,42 @@
 <%- include("components/header") -%>
 <%- include("components/nav") -%>
 
-
-
-
-        <div class="container">
-            <h1 class="text-body-emphasis text-center my-5">Donde encontrarnos?</h1>
-            <img src="imagenes/post1.png" alt="imagen_seguridad" class="home_section_img">
-            
-            <div class="row text-center">
-                <div class="col-6 row">
-                    <img src="imagenes/usuario/user1.jpg" alt="user1" class="col-2">
-                    <p class="col-2">Test Test 1</p>
-                </div>
-                <div class="col-6 row">
-                    <p class="col-4"><span>Leido: </span> 3000</p>
-                    <p class="col-4"><span>Tiempo de lectura: </span> 5 min</p>
-                    <p class="col-4"><span>Favoritos: </span> 30</p>
-                </div>
-            </div>
-
-            <div class="container">
-                <h3 class="my-3">¿Por qué elegir Laravel para el desarrollo de API?</h3>
-                
-                <p>Laravel, conocido por su sintaxis elegante y funciones fáciles de usar para los desarrolladores, es
-                    una excelente opción para el desarrollo de API. Este es el por qué:</p>
-                
-                <ul class="">
-                    <li>Sintaxis expresiva: el código limpio y expresivo de Laravel hace que el desarrollo de API sea
-                        intuitivo.</li>
-                    <li>Modularidad: Laravel ofrece una amplia gama de herramientas y bibliotecas que agilizan el
-                        desarrollo de API.
-                    </li>
-                    <li>Autenticación sólida: Laravel Passport simplifica la autenticación API con OAuth2.</li>
-                    <li>Comunidad activa: Laravel cuenta con una comunidad de desarrolladores activa y apasionada.
-                    </li>
-                    <li>Integración perfecta: las API de Laravel se pueden integrar fácilmente con otros servicios y
-                        plataformas.</li>
-                </ul>
-               
-            </div>
+<div class="container">
+    <h1 class="text-body-emphasis text-center my-5">Donde encontrarnos?</h1>
+    <img src="imagenes/post1.png" alt="imagen_seguridad" class="home_section_img">
+    
+    <div class="row text-center">
+        <div class="col-6 row">
+            <img src="imagenes/usuario/user1.jpg" alt="user1" class="col-2">
+            <p class="col-2">Test Test 1</p>
         </div>
+        <div class="col-6 row">
+            <p class="col-4"><span>Leido: </span> 3000</p>
+            <p class="col-4"><span>Tiempo de lectura: </span> 5 min</p>
+            <p class="col-4"><span>Favoritos: </span> 30</p>
+        </div>
+    </div>
+    <%= blogId %>
+    <div class="container">
+        <h3 class="my-3">¿Por qué elegir Laravel para el desarrollo de API?</h3>
+        
+        <p>Laravel, conocido por su sintaxis elegante y funciones fáciles de usar para los desarrolladores, es
+            una excelente opción para el desarrollo de API. Este es el por qué:</p>
+        
+        <ul class="">
+            <li>Sintaxis expresiva: el código limpio y expresivo de Laravel hace que el desarrollo de API sea
+                intuitivo.</li>
+            <li>Modularidad: Laravel ofrece una amplia gama de herramientas y bibliotecas que agilizan el
+                desarrollo de API.
+            </li>
+            <li>Autenticación sólida: Laravel Passport simplifica la autenticación API con OAuth2.</li>
+            <li>Comunidad activa: Laravel cuenta con una comunidad de desarrolladores activa y apasionada.
+            </li>
+            <li>Integración perfecta: las API de Laravel se pueden integrar fácilmente con otros servicios y
+                plataformas.</li>
+        </ul>
+        
+    </div>
+</div>
 
 <%- include("components/footer") -%>
