@@ -4,3 +4,11 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+
+.home_blog_img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    /* border-radius: 10px; */
+}
