@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-lg-8">
 
-            <div class="card mb-4">
+            <!-- <div class="card mb-4">
                 <a href="/blog/1"><img class="card-img-top" src="https://azimutweb.es/wp-content/uploads/2021/02/image-37.png"
                         alt="..." /></a>
                 <div class="card-body">
@@ -35,7 +35,7 @@
                     <p class="card-text">Laravel es un marco de aplicación web con una sintaxis elegante y expresiva. Un marco web proporciona una estructura y un punto de partida para crear su aplicación, lo que le permite concentrarse en crear algo sorprendente mientras nos preocupamos por los detalles.</p>
                     <a class="btn btn-primary" href="/blog/1">Leer mas →</a>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <!-- Blogs-->
@@ -65,27 +65,43 @@
         <!-- Sidebar-->
         <div class="col-lg-4">
             <div class="card mb-4">
-                <div class="card-header">Categorias</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <% categorias.forEach(function(categoria){ %>
-                                <li><a href="<%- categoria.id; %>"><%- categoria.nombre; %></a></li>
-                                <% }); %>
-                            </ul>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Categorias
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <% categorias.forEach(function(categoria){ %>
+                                        <li><a href="/blog/categoria/<%- categoria.id; %>"><%- categoria.nombre; %></a></li>
+                                        <% }); %>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
+                      </div>
                     </div>
-                </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                         Notas
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                             Este blog esta en construccion, la informacion subida sera de forma gradual para que se comparta la informacion entre todos
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
             </div>
-
-            <div class="card mb-4">
-                <div class="card-header">Notas</div>
-                <div class="card-body">
-                    Este blog esta en construccion, la informacion subida sera de forma gradual para que se comparta la informacion entre todos
-                </div>
-            </div>
-
+        
         </div>
     </div>
 </div>

@@ -1,0 +1,66 @@
+<%- include("components/header") -%>
+<%- include("components/nav") -%>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div class="container my-5">
+    <div>
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Titulo</label>
+          <input type="email" class="form-control" id="titulo" name="titulo" >
+          <div id="tituloHelp" class="form-text">Este es el titulo que aparecera cuando ingresen a tu blog</div>
+        </div>
+        <div class="mb-3">
+          <label for="cuerpo" class="form-label">Cuerpo</label>
+          <textarea name="cuerpo" id="cuerpo" cols="30" class="form-control"  rows="10"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="cuerpo" class="form-label">Imagen Url</label>
+            <input type="text" class="form-control" id="imagen_url" name="imagen_url" >
+          </div>
+        <div class="mb-3">
+            <label for="cuerpo" class="form-label">Categorias</label>
+            <select name="categoria" id="categoria">
+                <option value="0" selected disabled>Selecciona una categoria</option>
+                <% categorias.forEach(function(categoria){ %>
+                    <option value="<%- categoria.id; %>"><%- categoria.nombre; %></option>
+                <% }); %>
+            </select>
+        </div>
+        
+        <button type="button" class="btn btn-primary" onclick="publicar()">Publicar</button>
+    </div>
+</div>
+
+<script>
+    function publicar(){
+        var titulo = $("#titulo").val();
+        var cuerpo = $("#cuerpo").val();
+        var imagen_url = $("#imagen_url").val();
+        var categoria = $("#categoria").val();
+
+        $.ajax({
+            url: "/crear_blog",
+            type: "POST",
+            data: `titulo=${titulo}&cuerpo=${cuerpo}&imagen_url=${imagen_url}&categoria=${categoria}`,
+            success: function(data){
+                if(data.status){
+                    window.location.href = "/home";
+                }else {
+                    console.log(data.alerta)
+                }
+            },
+        });
+    }
+
+    function limpiarCampos(){
+        $("#titulo").val("");
+        $("#cuerpo").val("");
+        $("#imagen_url").val("");
+        $("#categoria").val("");
+    }
+
+</script>
+
+<%- include("components/footer") -%>

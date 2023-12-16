@@ -22,15 +22,21 @@ app.get('/home', async (req, res) => {
     res.render('home', {posts : posts, categorias: categorias});
 }); 
 
+
+app.get('/blog/categoria/:categoriaId', async (req, res) => {
+    const [posts] = await pool.query(`select * from post where categoria_id = ${req.params.categoriaId}`);
+    const [categorias] = await pool.query('select * from categoria');
+    res.render('home', {posts : posts, categorias: categorias});
+}); 
+
 app.get('/sobre_nosotros', (req, res) => {
     res.render('sobre_nosotros');
 }); 
 
-app.get('/blog/:blogId', (req, res) => {
-    res.render('blog', {blogId : req.params.blogId});
-    
+app.get('/blog/:blogId', async (req, res) => {
+    const [post] = await pool.query(`select * from post where id = ${req.params.blogId}`);
+    res.render('blog', {post : post[0]});
 });
-
 
 app.get('/iniciar_session', (req, res) => {
     res.render('iniciar_session');
@@ -51,13 +57,25 @@ app.get('/registrarme', (req, res) => {
     res.render('registrarme');
 });
 
-
 app.post('/registrarme', async (req, res) => {
-    console.log(req.body);
     const [resultado] = await pool.query(`INSERT INTO usuario(nombre, email, password, rol_id) VALUES ("${req.body.nombre}", "${req.body.email}", "${req.body.password}", 2)`);
 
     res.send({alerta : 'credenciales correctas', status : true});
 });
+
+
+app.get('/crear_blog',  async (req, res) => {
+    const [categorias] = await pool.query(`select * from categoria`);
+    res.render('crear_blog', {categorias : categorias});
+});
+
+
+app.post('/crear_blog',  async (req, res) => {
+    const [resultado] = await pool.query(`INSERT INTO post(usuario_id, categoria_id, titulo, cuerpo, veces_leido, me_gusta, fecha_creacion, imagen_url) VALUES (1, "${req.body.categoria}",  "${req.body.titulo}", "${req.body.cuerpo}", 0, 0, "2023-12-16", "${req.body.imagen_url}")`);
+
+    res.send({alerta : 'Blog creado con exito', status : true});
+});
+
 
 app.listen(3000);
 
