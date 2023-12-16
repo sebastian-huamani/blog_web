@@ -1,6 +1,8 @@
 <%- include("components/header") -%>
 <%- include("components/nav") -%>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 
 <div class="container mt-5 vh-100">
     <div class="row justify-content-center">
@@ -12,46 +14,55 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="input-group mb-4">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
-                            <input type="text" class="form-control" placeholder="Alfonso">
+                            <span class="input-group-text" >Nombre</span>
+                            <input type="text" class="form-control" placeholder="Alfonso" id="nombre" name="nombre">
                         </div>
-                       
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                            <input type="password" class="form-control" placeholder="*********">
+                            <span class="input-group-text" >Password</span>
+                            <input type="password" class="form-control" placeholder="*********" id="password" name="password">
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="input-group mb-4">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
-                            <input type="text" class="form-control" placeholder="apellido">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                            <input type="password" class="form-control" placeholder="*********">
+                        <div class="input-group mb-3 w-100">
+                            <span class="input-group-text" >Email</span>
+                            <input type="email" class="form-control" placeholder="email.com" id="email" name="email">
                         </div>
                     </div>
-                    <div class="col-12 my-2">
-                        <label for="">Ocupacion Actual </label>
-                        <select name="" id="" class="w-100">
-                            <option value="1">Profesor</option>
-                            <option value="2">Alumno</option>
-                            <option value="3">Desarrollador</option>
-                            <option value="2">Ing. Software</option>
-                        </select>
-                        
-                    </div>
+                   
                 </div>
 
-
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary mt-4" type="button">Registrarme</button>
+                    <button class="btn btn-primary mt-4" type="button" onclick="registrarme()">Registrarme</button>
                   </div>
 
             </div>
         </div>
     </div>
 </div>
+
+
+
+<script>
+    function registrarme(){
+
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var nombre = $('#nombre').val();
+
+        $.ajax({
+            url: "/registrarme",
+            type: "POST",
+            data: `email=${email}&password=${password}&nombre=${nombre}`,
+            success: function(data){
+                if(data.status){
+                    window.location.href = "/iniciar_session";
+                }else {
+                    console.log(data)
+                }
+            },
+        });
+    }
+</script>
 
 
 <%- include("components/footer") -%>

@@ -29,6 +29,7 @@ create TABLE post(
     cuerpo varchar(255) not null,
     veces_leido int not null ,
     me_gusta int not null,
+    fecha_creacion date not null,
     constraint FK_post_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     constraint FK_post_categoria FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );

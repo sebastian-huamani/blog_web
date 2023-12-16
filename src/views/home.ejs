@@ -23,9 +23,6 @@
 </header>
 
 <div class="container">
-    <% productos.forEach(function(user){ %>
-        <%- user.id; %>
-      <% }); %>
     <div class="row">
         <div class="col-lg-8">
 
@@ -42,65 +39,27 @@
 
             <div class="row">
                 <!-- Blogs-->
-                <div class="col-lg-6">
-                    <div class="card mb-4">
-                        <a href="/blog/1"><img class=" home_blog_img card-img-top"
-                                src="https://kodigo.org/wp-content/uploads/2023/07/experiencia-programacion-persona-que-trabaja-codigos-computadora-1024x683.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">Febrero 13, 2023</div>
-                            <h2 class="card-title h4">¿Qué es la tecnología?</h2>
-                            <p class="card-text">La tecnología es el conjunto de nociones y conocimientos científicos que el ser humano utiliza para lograr un objetivo preciso...</p>
-                            <a class="btn btn-primary" href="/blog/1">Leer mas →</a>
+                <div class="blogs_cuerpo">
+
+
+                    <% posts.forEach(function(post){ %>
+                        <div class="card mb-4" id="<%- post.id; %>">
+                            <a href="/blog/1"><img class=" home_blog_img card-img-top"
+                                    src="<%- post.imagen_url; %>" alt="..." /></a>
+                            <div class="card-body">
+                                <div class="small text-muted"><%- post.fecha_creacion; %></div>
+                                <h2 class="card-title h4"><%- post.titulo; %></h2>
+                                <p class="card-text"><%- post.cuerpo; %></p>
+                                <a class="btn btn-primary" href="/blog/<%- post.id; %>">Leer mas →</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card mb-4">
-                        <a href="/blog/1"><img class="  home_blog_img  card-img-top"
-                                src="https://res.cloudinary.com/practicaldev/image/fetch/s--3ix0rFmo--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dmmxiwgyuzodl7yqyuca.jpeg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">Noviembre 27, 2023</div>
-                            <h2 class="card-title h4">¿Qué es Spring Boot?</h2>
-                            <p class="card-text">Spring Boot es una de las tecnologías dentro del mundo de Spring de las que más se usa actualmente .¿Qué es y cómo funciona Spring Boot? . Para entender el concepto primero ...</p>
-                            <a class="btn btn-primary" href="/blog/1">Leer mas →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card mb-4">
-                        <a href="/blog/1"><img class="card-img-top  home_blog_img "
-                                src="https://i0.wp.com/www.latirus.com/blog/wp-content/uploads/2015/09/visual-studio-csharp.jpg?fit=1920%2C1080&ssl=1" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">Noviembre 27, 2023</div>
-                            <h2 class="card-title h4">¿Por qué C#?</h2>
-                            <p class="card-text">C# es un lenguaje de programaciónmoderno, innovador, de código abierto, multiplataforma orientado a objetos y uno de los 5 principales lenguajes de programación de GitHub.</p>
-                            <a class="btn btn-primary" href="/blog/1">Leer mas →</a>
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <a href="/blog/1"><img class="card-img-top  home_blog_img "
-                                src="https://miro.medium.com/v2/resize:fit:1400/1*LyZcwuLWv2FArOumCxobpA.png" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">Diciembre 16, 2023</div>
-                            <h2 class="card-title h4">Lo que necesitas saber sobre JS</h2>
-                            <p class="card-text">Javascript es un lenguaje de programación muy flexible, utilizado (tanto en navegador como en servidores) para crear funcionalidades, automatizar tareas...</p>
-                            <a class="btn btn-primary" href="/blog/1">Leer mas →</a>
-                        </div>
-                    </div>
+                        
+                      <% }); %>
+                   
+                    
                 </div>
             </div>
 
-            <!-- Pagination-->
-            <!-- <nav aria-label="Pagination">
-                <hr class="my-0" />
-                <ul class="pagination justify-content-center my-4">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-                    <li class="page-item active" aria-current="page"><a class="page-link" href="/blog/1">1</a></li>
-                    <li class="page-item"><a class="page-link" href="/blog/1">2</a></li>
-                    <li class="page-item"><a class="page-link" href="/blog/1">3</a></li>
-                    <li class="page-item disabled"><a class="page-link" href="/blog/1">...</a></li>
-                    <li class="page-item"><a class="page-link" href="/blog/1">15</a></li>
-                    <li class="page-item"><a class="page-link" href="/blog/1">Older</a></li>
-                </ul>
-            </nav> -->
         </div>
 
         <!-- Sidebar-->
@@ -111,16 +70,9 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <ul class="list-unstyled mb-0">
-                                <li><a href="/blog/1">Java Script</a></li>
-                                <li><a href="/blog/1">Mysql</a></li>
-                                <li><a href="/blog/1">Patron Repository</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="/blog/1">JavaScript</a></li>
-                                <li><a href="/blog/1">CSS</a></li>
-                                <li><a href="/blog/1">HTML</a></li>
+                                <% categorias.forEach(function(categoria){ %>
+                                <li><a href="<%- categoria.id; %>"><%- categoria.nombre; %></a></li>
+                                <% }); %>
                             </ul>
                         </div>
                     </div>

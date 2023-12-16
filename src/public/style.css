@@ -12,3 +12,18 @@
     object-fit: cover;
     /* border-radius: 10px; */
 }
+
+.blogs_cuerpo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+
+ 
+@media screen and (max-width:480px) {
+    .blogs_cuerpo{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+  }
