@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 
+var test = '';
+
 const body_parser = bodyParser;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
